@@ -1,0 +1,44 @@
+fetchArticles:
+  handler: src/index.handler
+  events:
+    - http:
+        path: /articles
+        method: get
+        cors: ${self:custom.config.cors}
+  vpc: ${self:custom.config.vpc}
+
+getArticle:
+  handler: src/index.handler
+  events:
+    - http:
+        path: articles/{articleID}
+        method: get
+        cors: ${self:custom.config.cors}
+  vpc: ${self:custom.config.vpc}
+
+createArticle:
+  handler: src/index.handler
+  events:
+    - http:
+        path: /articles
+        method: post
+        cors: ${self:custom.config.cors}
+  vpc: ${self:custom.config.vpc}
+
+updateArticle:
+  handler: src/index.handler
+  events:
+    - http:
+        path: articles/{articleID}
+        method: patch
+        cors: ${self:custom.config.cors}
+  vpc: ${self:custom.config.vpc}
+
+deleteArticle:
+  handler: src/index.handler
+  events:
+    - http:
+        path: articles/{articleID}
+        method: delete
+        cors: ${self:custom.config.cors}
+  vpc: ${self:custom.config.vpc}
